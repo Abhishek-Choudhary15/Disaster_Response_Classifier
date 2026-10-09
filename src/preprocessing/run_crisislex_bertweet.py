@@ -16,7 +16,7 @@ INPUT_FILE = (
 TOKENIZER_DIR = ROOT / "models" / "preprocessing" / "bertweet_tokenizer"
 OUTPUT_DIR = ROOT / "data" / "processed" / "crisislext26"
 
-MAX_LENGTH = 96  # Match the existing HumAID BERTweet pipeline.
+MAX_LENGTH = 256  # Match the existing HumAID BERTweet pipeline.
 
 
 def main():

@@ -14,7 +14,7 @@ OUTPUT_DIR = ROOT / "data" / "processed"
 ARTIFACT_DIR = ROOT / "models" / "preprocessing"
 
 MODEL_NAME = "vinai/bertweet-base"
-MAX_LENGTH = 96
+MAX_LENGTH = 256
 
 SPLITS = {
     "train": "humaid_train.csv",

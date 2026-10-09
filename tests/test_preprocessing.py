@@ -11,10 +11,15 @@ from src.preprocessing.labels import build_label_mapping, encode_labels
 
 class TestTextCleaning(unittest.TestCase):
     def test_retweet_prefix_removed(self):
-        result = clean_tweet_for_tfidf(
-            "RT @rescue_team: Help needed!"
-        )
-        self.assertTrue(result.startswith("help needed!"))
+        samples = [
+            "RT @rescue_team: Help needed!",
+            "RT @rescue_team Help needed!",
+        ]
+
+        for sample in samples:
+            with self.subTest(sample=sample):
+                result = clean_tweet_for_tfidf(sample)
+                self.assertEqual(result, "help needed!")
 
     def test_url_replaced(self):
         result = clean_tweet_for_tfidf(

@@ -16,7 +16,7 @@ from typing import Optional
 URL_PATTERN = re.compile(r"https?://\S+|www\.\S+", re.IGNORECASE)
 MENTION_PATTERN = re.compile(r"(?<!\w)@[A-Za-z0-9_]+")
 RETWEET_PREFIX_PATTERN = re.compile(
-    r"^\s*RT\s+@[A-Za-z0-9_]+:\s*",
+    r"^\s*RT\s+@[A-Za-z0-9_]+:?\s*",
     re.IGNORECASE,
 )
 WHITESPACE_PATTERN = re.compile(r"\s+")

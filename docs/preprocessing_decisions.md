@@ -158,7 +158,7 @@ OOV audit results:
 | Test | 331,808 | 19,794 | 5.97% |
 
 Validation and test use the vocabulary learned from training data. Tokens excluded by the minimum-frequency cutoff or absent from the training vocabulary map to `<UNK>`. The nonzero training OOV rate is expected because tokens appearing fewer than twice are excluded from the vocabulary.
-
+- **BERTweet maximum length:** 256 tokens, selected after measuring tokenized HumAID training tweets with the saved BERTweet tokenizer. At this limit, 52 of 53,531 training tweets (0.097%) exceed the limit. Padding and truncation use `max_length=256`.
 ## 11. CrisisLexT26 Transformation and Cross-Dataset Checks
 
 ### Transformation policy
@@ -171,9 +171,9 @@ CrisisLexT26 is used only for external transformation and evaluation preparation
 - Tweets processed: 27,933.
 - TF-IDF matrix shape: 27,933 × 50,000.
 - BiLSTM sequence shape: 27,933 × 64.
-- BERTweet input IDs shape: 27,933 × 96.
-- BERTweet attention mask shape: 27,933 × 96.
-- BiLSTM vocabulary OOV tokens: 120,897 out of 426,068 tokens (28.38%).
+- BERTweet input IDs shape: 27,933 × 256.
+- BERTweet attention mask shape: 27,933 × 256.
+- BiLSTM vocabulary OOV tokens: 120,897 out of 425,886 tokens (28.39%).
 - Existing unit tests: 8 passed.
 
 ### Label mapping
@@ -190,7 +190,7 @@ Rough mappings are provisional and should not be interpreted as verified ground 
 
 - HumAID and CrisisLexT26 TF-IDF matrices both have 50,000 features.
 - HumAID and CrisisLexT26 BiLSTM sequences both use length 64.
-- HumAID and CrisisLexT26 BERTweet inputs both use length 96 with matching attention masks.
+- HumAID and CrisisLexT26 BERTweet inputs both use length 256 with matching attention masks.
 - The tested Kaggle and mapped CrisisLexT26 rows matched the shared TF-IDF cleaning function.
 - Mapped CrisisLexT26 label IDs matched the saved HumAID label mapping.
 - The Kaggle vectorizer is stored separately from the HumAID vectorizer.
