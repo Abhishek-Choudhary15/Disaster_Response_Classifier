@@ -19,3 +19,11 @@ data/processed/*
 !data/processed/.gitkeep
 models/*
 !models/.gitkeep
+
+# Python test and cache artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Generated preprocessing artifacts
+artifacts/
