@@ -205,3 +205,13 @@ Rough mappings are provisional and should not be interpreted as verified ground 
 - Cross-dataset cleaning checks used samples, not exhaustive row-by-row comparisons.
 - Artifact-loading paths should be checked in the relevant code before modeling.
 - The optional `emoji` package is absent; BERTweet preprocessing completed with the tokenizer's current behavior.
+
+
+## Split Integrity Audit
+
+- Exact duplicate audit was run on the original HumAID train, validation, and test CSVs after trimming surrounding whitespace.
+- Four exact tweet-text overlaps were found between train and validation; no exact overlaps were found between train and test or validation and test.
+- No empty or whitespace-only tweet text was found in any split.
+- The four train/validation duplicate pairs are recorded in `data/processed/split_integrity_audit.json`, including zero-based row indices. Original raw split files were not changed.
+- Near-duplicate/retweet-chain overlap was not verified by this exact-match audit. Event-level independence cannot be established from the available split CSVs because event identifiers are unavailable.
+- Preserve the official split assignments for the main experiments. Disclose the four exact overlaps as a data limitation; do not silently delete rows or reshuffle the official splits.
