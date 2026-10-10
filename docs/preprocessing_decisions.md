@@ -158,7 +158,8 @@ OOV audit results:
 | Test | 331,808 | 19,794 | 5.97% |
 
 Validation and test use the vocabulary learned from training data. Tokens excluded by the minimum-frequency cutoff or absent from the training vocabulary map to `<UNK>`. The nonzero training OOV rate is expected because tokens appearing fewer than twice are excluded from the vocabulary.
-- **BERTweet maximum length:** 256 tokens, selected after measuring tokenized HumAID training tweets with the saved BERTweet tokenizer. At this limit, 52 of 53,531 training tweets (0.097%) exceed the limit. Padding and truncation use `max_length=256`.
+- **BERTweet maximum length:** 256 tokens, selected after measuring tokenized HumAID training tweets with the saved BERTweet tokenizer. Tweets exceeding 256 tokens before truncation: train 52/53,531 (0.097%), validation 6/7,793 (0.077%), and test 12/15,160 (0.079%). Padding and truncation use `max_length=256`.
+
 ## 11. CrisisLexT26 Transformation and Cross-Dataset Checks
 
 ### Transformation policy
@@ -199,6 +200,7 @@ Rough mappings are provisional and should not be interpreted as verified ground 
 
 - CrisisLexT26's 28.38% BiLSTM OOV rate is higher than HumAID's test OOV rate; the HumAID vocabulary remains frozen.
 - Event-level generalization has not been established by the available audit.
+- Kaggle encoding audit: one training tweet contains a suspicious `\x89âÂ` character sequence. The original source encoding has not been verified, so the text was left unchanged rather than applying a broad character-removal rule. No matching suspicious rows were found in the validation or test text audit.
 - Rough category mappings require cautious interpretation.
 - Cross-dataset cleaning checks used samples, not exhaustive row-by-row comparisons.
 - Artifact-loading paths should be checked in the relevant code before modeling.
