@@ -150,7 +150,7 @@ def main():
 
         joblib.dump(
             matrices[split],
-            OUTPUT_DIR / f"{split}_tfidf.npz",
+            OUTPUT_DIR / f"{split}_tfidf.joblib",
         )
 
     # Write a compact report.
