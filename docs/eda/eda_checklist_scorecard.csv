@@ -1,0 +1,42 @@
+Item,Check,Measured finding,Decision / action
+A1,Row counts,all five counts match the documented values,none
+A2,Null / empty text,humaid 0 | kaggle 0 | crisislex 0 (nulls); humaid 0 | kaggle 0 | crisislex 0 (empty),none - no missing text
+A3,Exact duplicate rows,humaid 0 | kaggle 110 | crisislex 2625,Kaggle + CrisisLex deduplicated / flagged in the pipeline
+A4,Near-duplicate rows,humaid 2 | kaggle 777 | crisislex 3647,same key (normalize_for_dedup) used for dedup + leakage guard
+A5,Empty after cleaning,humaid 0 | kaggle 0 | crisislex 0 empty; no-letters: humaid 0 | kaggle 0 | crisislex 0,no row needs special handling
+A6,HTML entities,humaid 4886 | kaggle 359 | crisislex 1259 raw -> humaid 0 | kaggle 0 | crisislex 0 after cleaning,explicit unescape step (repeated) in text_cleaning
+A7,Apostrophe-less contractions / elongations,humaid 2658 | kaggle 109 | crisislex 91 / humaid 288 | kaggle 133 | crisislex 390,"left as-is, same rule for every dataset"
+A7b,Encoding damage (mojibake),humaid 0 | kaggle 669 | crisislex 0,fix_mojibake in the shared cleaner (only Kaggle affected)
+A8,Length percentiles,token p99: humaid 57 | kaggle 32 | crisislex 33,BiLSTM max_len=64; BERTweet 128
+A9,OOV vs HumAID-train vocab,humaid 2.99% | kaggle 10.42% | crisislex 19.47%,CrisisLex shift is large - expected for a 2012-13 external test
+A10,Language,humaid en=98.27% | kaggle en=94.0% | crisislex en=71.2%,"HumAID/Kaggle are English; CrisisLexT26 is multilingual (see D7) -> language_guess flag, English-only evaluation"
+A11,Hashtag dominance (top-1 share),humaid 4.35% | kaggle 2.23% | crisislex 2.65%,no single hashtag drives a dataset
+A12,Mentions / URLs,humaid 0.619@ 0.0url | kaggle 0.353@ 0.62url | crisislex 0.805@ 0.541url,placeholders in the TF-IDF path
+A13,Emoji,humaid 1591 rows | kaggle 0 rows | crisislex 519 rows,TF-IDF pattern keeps emoji; transformer path demojizes
+A14,Tweet IDs,"Kaggle dup IDs 0; CrisisLex dup IDs 1, IDs with different text 0; HumAID has no ID column",documented N/A for HumAID
+A15,Manual reading,15 random rows per dataset + 15 per HumAID class read,notes recorded in docs
+B1,HumAID class distribution,10 classes; largest 14891 / smallest 250,class-weighted loss in training
+B2,Imbalance ratio,59.6,weighted loss / oversampling + macro-F1
+B3,Event vs label,no event column in the CSVs; disaster-type keyword proxy only,limitation documented; add event files if obtainable
+B4,Split consistency,"max class-share gap 0.03 pp (val), 0.02 pp (test)",splits are consistent
+B5,Cross-split leakage,train -> validation: 5.0 rows | train -> test: 0.0 rows | validation -> test: 0.0 rows,official splits untouched; overlap disclosed
+B6,Rare classes (<500 train rows),['missing_or_found_people'],flagged for imbalance handling
+B7,dont_know_cant_judge vs not_humanitarian,dont_know_cant_judge is absent from the data -> N/A; read not_humanitarian vs other_relevant_information instead,documented
+C1,Kaggle target balance (raw),"{'0 = not disaster': 57.0, '1 = disaster': 43.0}",stratified split
+C2,keyword column,0.8% missing; 4 pure keywords; 15.0% of keywords have an extreme disaster rate,keyword NOT used as a feature (shortcut risk)
+C3,location column,33.3% missing; 84.3% of values unique,location NOT used (free text)
+C4,Hard negatives,485 non-disaster tweets contain disaster words,this is the signal the pre-filter must learn
+C5,Only labeled file used,unlabeled competition file has target: False,enforced by verify_pipeline C7
+C6,Length by target,"{'chars': {0: 95.7, 1: 108.1}, 'tokens': {0: 16.7, 1: 17.7}}",no strong length shortcut
+C-q,Duplicates / conflicts / leakage,"110 exact dup, 777 near-dup, 83 conflicting groups; a naive split leaks 111 val + 112 test rows",dedupe before split -> 6753 rows
+D1,Schema across 26 files,1 distinct column layout(s),safe to concatenate
+D2,Text vs IDs,100.0% of rows have full text,no rehydration needed
+D3,Three label dimensions,"Informativeness, Information Type, Information Source analysed separately + crosstab",Type -> 11-class eval; Informativeness -> pre-filter eval
+D4,Event distribution,26 events; largest 5.2% of rows,no single event dominates
+D5,Era vocabulary shift,top-5k token Jaccard 0.35; shared top-20 hashtags 1,robustness drop is expected and will be reported
+D6,event_name retained,event_name column present for all rows,verified by verify_pipeline D6
+D7,Language by event,"8 of 26 events are under 50% English: 2012 Venezuela refinery, 2013 Sardinia floods, 2012 Italy earthquakes, 2012 Guatemala earthquake...",language_guess + English-only evaluation flags in the pipeline
+E1,Vocabulary overlap,kaggle OOV 10.42% | crisislex OOV 19.47% | humaid OOV 2.99%,reported in docs/oov_audit.json
+E2,Length overlay vs max_len,overlay in A8; truncation table in E2,max_len 64 safe for all three
+E3,Taxonomy feasibility,"{'good': 10959, 'rough': 13555, 'unmapped': 3419}; no counterpart for ['displaced_people_and_evacuations', 'missing_or_found_people', 'requests_or_urgent_needs']",evaluate on the 7 mapped classes; Informativeness -> pre-filter test
+E4,Preprocessing equivalence,5 random rows per dataset through the same production cleaners,identical rules for all three

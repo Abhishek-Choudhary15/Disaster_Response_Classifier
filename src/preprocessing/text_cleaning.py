@@ -1,60 +1,77 @@
-
 """Reusable text preprocessing for the HumAID disaster classifier.
 
-Policy:
-- Preserve the original tweet separately.
-- Replace URLs and mentions with stable placeholders.
-- Remove leading retweet prefixes.
-- Keep hashtag words but remove the # symbol.
-- Preserve emojis, punctuation, casing, and elongated spellings.
+ONE implementation used for HumAID, Kaggle and CrisisLexT26 (checklist A15, D2).
+
+Policy
+- Keep the original tweet separately (callers store it).
+- Unescape HTML entities first, repeatedly, so '&amp;amp;' is fully decoded.
+- Remove known encoding-damage ("mojibake") sequences.
+- Strip leading retweet prefixes, including chained 'RT @a: RT @b:'.
+- TF-IDF / BiLSTM path: URLs -> URLTOKEN, mentions -> USERTOKEN, hashtag words
+  kept without '#', lower-cased; punctuation, emojis and elongations preserved.
+- Transformer path: keep casing, hashtags, URLs, mentions, emojis and informal
+  spelling; BERTweet's own normalizer handles URLs/mentions/emojis.
 """
 
-import re
 import html
+import re
 from typing import Optional
 
 URL_PATTERN = re.compile(r"https?://\S+|www\.\S+", re.IGNORECASE)
 MENTION_PATTERN = re.compile(r"(?<!\w)@[A-Za-z0-9_]+")
 RETWEET_PREFIX_PATTERN = re.compile(
-    r"^\s*RT\s+@[A-Za-z0-9_]+:?\s*",
+    r"^(?:\s*RT\s+@[A-Za-z0-9_]+:?\s*)+",   # also strips chained prefixes
     re.IGNORECASE,
 )
 WHITESPACE_PATTERN = re.compile(r"\s+")
 
+# Encoding damage seen only in the Kaggle file (0 hits in HumAID/CrisisLexT26):
+#   \x89Û? (mangled dashes/quotes), åÊ (mangled non-breaking space), Ì¢ / ã¢ ...
+MOJIBAKE_PATTERN = re.compile(r"\x89Û.?|\x89|åÊ|å_|Ì[¢¤Ñ_]|ã¢")
 
-def clean_tweet_for_tfidf(text: Optional[str]) -> str:
-    """Normalize tweet text for a traditional TF-IDF model.
 
-    This function is deterministic and does not learn from the dataset.
-    """
+def unescape_html(text: str) -> str:
+    """Unescape HTML entities until stable (handles '&amp;amp;')."""
+    for _ in range(3):
+        decoded = html.unescape(text)
+        if decoded == text:
+            break
+        text = decoded
+    return text
+
+
+def fix_mojibake(text: str) -> str:
+    """Replace known encoding-damage sequences with a space."""
+    return MOJIBAKE_PATTERN.sub(" ", text)
+
+
+def _base_clean(text: Optional[str]) -> str:
+    """Steps shared by both paths, in the required order."""
     if text is None:
         return ""
+    text = unescape_html(str(text))
+    text = fix_mojibake(text)
+    text = WHITESPACE_PATTERN.sub(" ", text).strip()
+    return RETWEET_PREFIX_PATTERN.sub("", text)
 
-    text = html.unescape(str(text)).strip()
-    text = RETWEET_PREFIX_PATTERN.sub("", text)
+
+def clean_tweet_for_tfidf(text: Optional[str]) -> str:
+    """Normalize tweet text for TF-IDF / BiLSTM. Deterministic and idempotent."""
+    text = _base_clean(text)
     text = URL_PATTERN.sub(" URLTOKEN ", text)
     text = MENTION_PATTERN.sub(" USERTOKEN ", text)
-
-    # Keep hashtag words, removing only the hash symbol.
-    text = re.sub(r"#(?=\w)", "", text)
-
-    # Preserve punctuation and emojis; normalize whitespace only.
+    text = re.sub(r"#(?=\w)", "", text)          # keep the hashtag word
     text = WHITESPACE_PATTERN.sub(" ", text).strip()
-
     return text.lower()
 
 
 def prepare_tweet_for_transformer(text: Optional[str]) -> str:
-    """Light preprocessing for a future tweet-aware transformer.
+    """Light preprocessing for BERTweet (casing/emoji/punctuation preserved)."""
+    return WHITESPACE_PATTERN.sub(" ", _base_clean(text)).strip()
 
-    Preserve casing, hashtags, punctuation, emojis, and informal spelling.
-    Remove only a leading retweet prefix and normalize HTML entities.
-    """
-    if text is None:
-        return ""
 
-    text = html.unescape(str(text)).strip()
-    text = RETWEET_PREFIX_PATTERN.sub("", text)
-    text = WHITESPACE_PATTERN.sub(" ", text).strip()
-
-    return text
+def normalize_for_dedup(text: Optional[str]) -> str:
+    """Key that collapses retweets / URL / mention / case / punctuation noise."""
+    t = clean_tweet_for_tfidf(text)
+    t = re.sub(r"\b(urltoken|usertoken)\b", " ", t)
+    return re.sub(r"[^a-z0-9]+", " ", t).strip()
