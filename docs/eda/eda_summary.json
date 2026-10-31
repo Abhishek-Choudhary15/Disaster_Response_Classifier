@@ -1,0 +1,894 @@
+{
+  "A1_row_counts": [
+    {
+      "index": "HumAID train",
+      "found": 53531,
+      "expected": 53531,
+      "match": true
+    },
+    {
+      "index": "HumAID validation",
+      "found": 7793,
+      "expected": 7793,
+      "match": true
+    },
+    {
+      "index": "HumAID test",
+      "found": 15160,
+      "expected": 15160,
+      "match": true
+    },
+    {
+      "index": "Kaggle labeled train",
+      "found": 7613,
+      "expected": 7613,
+      "match": true
+    },
+    {
+      "index": "CrisisLexT26 labeled (26 files)",
+      "found": 27933,
+      "expected": 27933,
+      "match": true
+    }
+  ],
+  "profiles": {
+    "humaid_train": {
+      "rows": 53531,
+      "null_text": 0,
+      "empty_text": 0,
+      "exact_duplicate_rows": 0,
+      "near_duplicate_rows": 2,
+      "html_entity_rows": 4886,
+      "html_entity_rows_after_cleaning": 0,
+      "retweet_prefix_rows": 7621,
+      "encoding_damage_rows": 0,
+      "empty_after_tfidf_cleaning": 0,
+      "empty_after_transformer_cleaning": 0,
+      "no_letters_or_digits_after_cleaning": 0,
+      "  of which url/mention only": 0,
+      "  of which emoji only": 0,
+      "apostrophe_less_contraction_rows": 2658,
+      "elongated_word_rows": 288,
+      "char_length": {
+        "min": 13,
+        "mean": 141.6,
+        "p50": 125.0,
+        "p95": 273.0,
+        "p99": 284.0,
+        "max": 945
+      },
+      "whitespace_token_length": {
+        "min": 3,
+        "mean": 22.1,
+        "p50": 19.0,
+        "p95": 44.0,
+        "p99": 50.0,
+        "max": 96
+      },
+      "project_token_length": {
+        "min": 3,
+        "mean": 24.8,
+        "p50": 22.0,
+        "p95": 50.0,
+        "p99": 57.0,
+        "max": 120
+      },
+      "pct_over_bilstm_max_len": 0.133,
+      "hashtags": {
+        "total": 66305,
+        "unique": 12814,
+        "top1_share_pct": 4.35,
+        "top10_share_pct": 25.63,
+        "top20": {
+          "#keralafloods": 2887,
+          "#harvey": 2093,
+          "#cycloneidai": 2087,
+          "#hurricaneharvey": 1640,
+          "#keralafloodrelief": 1578,
+          "#earthquake": 1563,
+          "#hurricanedorian": 1355,
+          "#hurricanemaria": 1352,
+          "#hurricaneflorence": 1257,
+          "#irma": 1180,
+          "#dorian": 1176,
+          "#hurricaneirma": 946,
+          "#eqnz": 901,
+          "#kerala": 818,
+          "#puertorico": 810,
+          "#florence": 783,
+          "#hurricane": 495,
+          "#italyearthquake": 485,
+          "#campfire": 435,
+          "#pakistan": 397
+        }
+      },
+      "mentions": {
+        "total": 33125,
+        "rows_with": 20400,
+        "mean_per_row": 0.619,
+        "max_in_row": 50
+      },
+      "urls": {
+        "total": 6,
+        "rows_with": 4,
+        "mean_per_row": 0.0,
+        "max_in_row": 3
+      },
+      "emoji": {
+        "total": 2731,
+        "unique": 302,
+        "rows_with": 1591,
+        "top10": {
+          "\u2764": 693,
+          "\ud83d\ude4f": 172,
+          "\u27a1": 85,
+          "\u26a0": 62,
+          "\ud83c\udffc": 61,
+          "\u2665": 58,
+          "\ud83d\udea8": 57,
+          "\ud83c\udffb": 51,
+          "\u2640": 50,
+          "\u26a1": 45
+        }
+      }
+    },
+    "humaid_validation": {
+      "rows": 7793,
+      "null_text": 0,
+      "empty_text": 0,
+      "exact_duplicate_rows": 1,
+      "near_duplicate_rows": 1,
+      "html_entity_rows": 737,
+      "html_entity_rows_after_cleaning": 0,
+      "retweet_prefix_rows": 1123,
+      "encoding_damage_rows": 0,
+      "empty_after_tfidf_cleaning": 0,
+      "empty_after_transformer_cleaning": 0,
+      "no_letters_or_digits_after_cleaning": 0,
+      "  of which url/mention only": 0,
+      "  of which emoji only": 0,
+      "apostrophe_less_contraction_rows": 367,
+      "elongated_word_rows": 43,
+      "char_length": {
+        "min": 20,
+        "mean": 141.1,
+        "p50": 124.0,
+        "p95": 273.0,
+        "p99": 285.0,
+        "max": 475
+      },
+      "whitespace_token_length": {
+        "min": 3,
+        "mean": 22.0,
+        "p50": 19.0,
+        "p95": 44.0,
+        "p99": 49.0,
+        "max": 64
+      },
+      "project_token_length": {
+        "min": 3,
+        "mean": 24.7,
+        "p50": 21.0,
+        "p95": 50.0,
+        "p99": 57.0,
+        "max": 85
+      },
+      "pct_over_bilstm_max_len": 0.115,
+      "hashtags": {
+        "total": 9819,
+        "unique": 3101,
+        "top1_share_pct": 4.23,
+        "top10_share_pct": 24.88,
+        "top20": {
+          "#keralafloods": 415,
+          "#cycloneidai": 306,
+          "#harvey": 300,
+          "#hurricaneharvey": 228,
+          "#earthquake": 227,
+          "#keralafloodrelief": 217,
+          "#hurricanemaria": 206,
+          "#irma": 190,
+          "#hurricanedorian": 178,
+          "#hurricaneflorence": 176,
+          "#dorian": 170,
+          "#hurricaneirma": 139,
+          "#florence": 124,
+          "#eqnz": 120,
+          "#puertorico": 118,
+          "#kerala": 107,
+          "#hurricane": 88,
+          "#italyearthquake": 77,
+          "#news": 72,
+          "#pakistan": 62
+        }
+      },
+      "mentions": {
+        "total": 4706,
+        "rows_with": 3016,
+        "mean_per_row": 0.604,
+        "max_in_row": 16
+      },
+      "urls": {
+        "total": 0,
+        "rows_with": 0,
+        "mean_per_row": 0.0,
+        "max_in_row": 0
+      },
+      "emoji": {
+        "total": 427,
+        "unique": 100,
+        "rows_with": 217,
+        "top10": {
+          "\u2764": 95,
+          "\ud83d\ude4f": 27,
+          "\ud83d\udea8": 17,
+          "\u27a1": 15,
+          "\ud83d\udc47": 12,
+          "\u26a0": 12,
+          "\ud83c\udffe": 11,
+          "\ud83c\udffc": 11,
+          "\ud83d\ude41": 9,
+          "\ud83d\udc4d": 9
+        }
+      }
+    },
+    "humaid_test": {
+      "rows": 15160,
+      "null_text": 0,
+      "empty_text": 0,
+      "exact_duplicate_rows": 1,
+      "near_duplicate_rows": 2,
+      "html_entity_rows": 1413,
+      "html_entity_rows_after_cleaning": 0,
+      "retweet_prefix_rows": 2154,
+      "encoding_damage_rows": 0,
+      "empty_after_tfidf_cleaning": 0,
+      "empty_after_transformer_cleaning": 0,
+      "no_letters_or_digits_after_cleaning": 0,
+      "  of which url/mention only": 0,
+      "  of which emoji only": 0,
+      "apostrophe_less_contraction_rows": 717,
+      "elongated_word_rows": 68,
+      "char_length": {
+        "min": 11,
+        "mean": 141.8,
+        "p50": 125.0,
+        "p95": 273.0,
+        "p99": 283.0,
+        "max": 959
+      },
+      "whitespace_token_length": {
+        "min": 3,
+        "mean": 22.1,
+        "p50": 19.0,
+        "p95": 44.0,
+        "p99": 50.0,
+        "max": 99
+      },
+      "project_token_length": {
+        "min": 3,
+        "mean": 24.8,
+        "p50": 22.0,
+        "p95": 50.0,
+        "p99": 58.0,
+        "max": 103
+      },
+      "pct_over_bilstm_max_len": 0.191,
+      "hashtags": {
+        "total": 18711,
+        "unique": 5093,
+        "top1_share_pct": 4.46,
+        "top10_share_pct": 25.62,
+        "top20": {
+          "#keralafloods": 834,
+          "#cycloneidai": 588,
+          "#harvey": 577,
+          "#keralafloodrelief": 462,
+          "#hurricaneharvey": 440,
+          "#earthquake": 435,
+          "#hurricanemaria": 385,
+          "#hurricaneflorence": 375,
+          "#hurricanedorian": 350,
+          "#irma": 348,
+          "#dorian": 317,
+          "#hurricaneirma": 257,
+          "#eqnz": 245,
+          "#kerala": 222,
+          "#puertorico": 220,
+          "#florence": 206,
+          "#italyearthquake": 139,
+          "#hurricane": 136,
+          "#news": 136,
+          "#greece": 125
+        }
+      },
+      "mentions": {
+        "total": 9294,
+        "rows_with": 5810,
+        "mean_per_row": 0.613,
+        "max_in_row": 50
+      },
+      "urls": {
+        "total": 1,
+        "rows_with": 1,
+        "mean_per_row": 0.0,
+        "max_in_row": 1
+      },
+      "emoji": {
+        "total": 691,
+        "unique": 142,
+        "rows_with": 428,
+        "top10": {
+          "\u2764": 179,
+          "\ud83d\ude4f": 45,
+          "\u26a0": 33,
+          "\u27a1": 21,
+          "\u2714": 20,
+          "\u2665": 18,
+          "\ud83c\udffd": 17,
+          "\ud83d\ude2d": 15,
+          "\ud83c\udffc": 14,
+          "\u2640": 13
+        }
+      }
+    },
+    "kaggle_raw": {
+      "rows": 7613,
+      "null_text": 0,
+      "empty_text": 0,
+      "exact_duplicate_rows": 110,
+      "near_duplicate_rows": 777,
+      "html_entity_rows": 359,
+      "html_entity_rows_after_cleaning": 0,
+      "retweet_prefix_rows": 18,
+      "encoding_damage_rows": 669,
+      "empty_after_tfidf_cleaning": 0,
+      "empty_after_transformer_cleaning": 0,
+      "no_letters_or_digits_after_cleaning": 0,
+      "  of which url/mention only": 0,
+      "  of which emoji only": 0,
+      "apostrophe_less_contraction_rows": 109,
+      "elongated_word_rows": 133,
+      "char_length": {
+        "min": 7,
+        "mean": 101.0,
+        "p50": 107.0,
+        "p95": 140.0,
+        "p99": 143.0,
+        "max": 157
+      },
+      "whitespace_token_length": {
+        "min": 1,
+        "mean": 14.9,
+        "p50": 15.0,
+        "p95": 24.0,
+        "p99": 27.0,
+        "max": 31
+      },
+      "project_token_length": {
+        "min": 1,
+        "mean": 17.1,
+        "p50": 17.0,
+        "p95": 28.0,
+        "p99": 32.0,
+        "max": 50
+      },
+      "pct_over_bilstm_max_len": 0.0,
+      "hashtags": {
+        "total": 3312,
+        "unique": 1917,
+        "top1_share_pct": 2.23,
+        "top10_share_pct": 8.57,
+        "top20": {
+          "#news": 74,
+          "#hot": 31,
+          "#prebreak": 30,
+          "#best": 30,
+          "#nowplaying": 23,
+          "#islam": 23,
+          "#hiroshima": 22,
+          "#earthquake": 19,
+          "#gbbo": 18,
+          "#jobs": 14,
+          "#isis": 12,
+          "#job": 12,
+          "#terrorism": 11,
+          "#japan": 11,
+          "#world": 11,
+          "#hiring": 11,
+          "#sismo": 10,
+          "#yyc": 10,
+          "#india": 10,
+          "#directioners": 9
+        }
+      },
+      "mentions": {
+        "total": 2687,
+        "rows_with": 1994,
+        "mean_per_row": 0.353,
+        "max_in_row": 8
+      },
+      "urls": {
+        "total": 4723,
+        "rows_with": 3971,
+        "mean_per_row": 0.62,
+        "max_in_row": 4
+      },
+      "emoji": {
+        "total": 0,
+        "unique": 0,
+        "rows_with": 0,
+        "top10": {}
+      },
+      "ids": {
+        "unique": 7613,
+        "duplicate_ids": 0,
+        "ids_with_different_texts": 0
+      }
+    },
+    "crisislex": {
+      "rows": 27933,
+      "null_text": 0,
+      "empty_text": 0,
+      "exact_duplicate_rows": 2625,
+      "near_duplicate_rows": 3647,
+      "html_entity_rows": 1259,
+      "html_entity_rows_after_cleaning": 0,
+      "retweet_prefix_rows": 14190,
+      "encoding_damage_rows": 0,
+      "empty_after_tfidf_cleaning": 0,
+      "empty_after_transformer_cleaning": 0,
+      "no_letters_or_digits_after_cleaning": 0,
+      "  of which url/mention only": 0,
+      "  of which emoji only": 0,
+      "apostrophe_less_contraction_rows": 91,
+      "elongated_word_rows": 390,
+      "char_length": {
+        "min": 9,
+        "mean": 112.7,
+        "p50": 122.0,
+        "p95": 140.0,
+        "p99": 144.0,
+        "max": 152
+      },
+      "whitespace_token_length": {
+        "min": 1,
+        "mean": 16.2,
+        "p50": 17.0,
+        "p95": 24.0,
+        "p99": 26.0,
+        "max": 31
+      },
+      "project_token_length": {
+        "min": 1,
+        "mean": 18.3,
+        "p50": 18.0,
+        "p95": 28.0,
+        "p99": 33.0,
+        "max": 77
+      },
+      "pct_over_bilstm_max_len": 0.011,
+      "hashtags": {
+        "total": 29512,
+        "unique": 5493,
+        "top1_share_pct": 2.65,
+        "top10_share_pct": 21.37,
+        "top20": {
+          "#terremoto": 781,
+          "#sardegna": 765,
+          "#rescueph": 740,
+          "#bigwet": 692,
+          "#sghaze": 668,
+          "#amuay": 585,
+          "#bangladesh": 580,
+          "#earthquake": 531,
+          "#nswfires": 483,
+          "#yycflood": 482,
+          "#reliefph": 476,
+          "#pabloph": 451,
+          "#russianmeteor": 406,
+          "#maringph": 399,
+          "#santamaria": 355,
+          "#lax": 351,
+          "#prayforvisayas": 349,
+          "#prayforboston": 338,
+          "#abflood": 314,
+          "#costarica": 308
+        }
+      },
+      "mentions": {
+        "total": 22493,
+        "rows_with": 17557,
+        "mean_per_row": 0.805,
+        "max_in_row": 10
+      },
+      "urls": {
+        "total": 15101,
+        "rows_with": 14339,
+        "mean_per_row": 0.541,
+        "max_in_row": 3
+      },
+      "emoji": {
+        "total": 997,
+        "unique": 142,
+        "rows_with": 519,
+        "top10": {
+          "\ud83d\ude4f": 157,
+          "\ud83d\ude14": 102,
+          "\u2764": 78,
+          "\u2614": 49,
+          "\u2665": 40,
+          "\u2605": 37,
+          "\u2600": 27,
+          "\ud83d\ude2d": 17,
+          "\u2714": 16,
+          "\ud83d\ude33": 16
+        }
+      },
+      "ids": {
+        "unique": 27932,
+        "duplicate_ids": 1,
+        "ids_with_different_texts": 0
+      }
+    }
+  },
+  "A8_length_table": {
+    "humaid_train": {
+      "chars p50": 125.0,
+      "chars p95": 273.0,
+      "chars p99": 284.0,
+      "chars max": 945.0,
+      "tokens p50": 22.0,
+      "tokens p95": 50.0,
+      "tokens p99": 57.0,
+      "tokens max": 120.0,
+      "% tweets over BiLSTM max_len": 0.133
+    },
+    "humaid_validation": {
+      "chars p50": 124.0,
+      "chars p95": 273.0,
+      "chars p99": 285.0,
+      "chars max": 475.0,
+      "tokens p50": 21.0,
+      "tokens p95": 50.0,
+      "tokens p99": 57.0,
+      "tokens max": 85.0,
+      "% tweets over BiLSTM max_len": 0.115
+    },
+    "humaid_test": {
+      "chars p50": 125.0,
+      "chars p95": 273.0,
+      "chars p99": 283.0,
+      "chars max": 959.0,
+      "tokens p50": 22.0,
+      "tokens p95": 50.0,
+      "tokens p99": 58.0,
+      "tokens max": 103.0,
+      "% tweets over BiLSTM max_len": 0.191
+    },
+    "kaggle_raw": {
+      "chars p50": 107.0,
+      "chars p95": 140.0,
+      "chars p99": 143.0,
+      "chars max": 157.0,
+      "tokens p50": 17.0,
+      "tokens p95": 28.0,
+      "tokens p99": 32.0,
+      "tokens max": 50.0,
+      "% tweets over BiLSTM max_len": 0.0
+    },
+    "crisislex": {
+      "chars p50": 122.0,
+      "chars p95": 140.0,
+      "chars p99": 144.0,
+      "chars max": 152.0,
+      "tokens p50": 18.0,
+      "tokens p95": 28.0,
+      "tokens p99": 33.0,
+      "tokens max": 77.0,
+      "% tweets over BiLSTM max_len": 0.011
+    }
+  },
+  "A9_oov_vs_humaid_train_vocab": {
+    "humaid_train": {
+      "tokens": 1327473,
+      "oov_tokens": 27169,
+      "oov_rate_pct": 2.05
+    },
+    "humaid_validation": {
+      "tokens": 192575,
+      "oov_tokens": 5915,
+      "oov_rate_pct": 3.07
+    },
+    "humaid_test": {
+      "tokens": 375943,
+      "oov_tokens": 11247,
+      "oov_rate_pct": 2.99
+    },
+    "kaggle_raw": {
+      "tokens": 130104,
+      "oov_tokens": 13559,
+      "oov_rate_pct": 10.42
+    },
+    "crisislex": {
+      "tokens": 510563,
+      "oov_tokens": 99397,
+      "oov_rate_pct": 19.47
+    }
+  },
+  "A9_humaid_vocab_size": 21585,
+  "A10_language_sample_pct": {
+    "humaid_train": {
+      "en": 98.27,
+      "da": 0.33,
+      "es": 0.23,
+      "af": 0.23,
+      "it": 0.23,
+      "pt": 0.17
+    },
+    "kaggle_raw": {
+      "en": 94.0,
+      "too_short": 2.17,
+      "af": 0.47,
+      "it": 0.4,
+      "fr": 0.4,
+      "no": 0.4
+    },
+    "crisislex": {
+      "en": 71.2,
+      "es": 11.1,
+      "it": 6.1,
+      "pt": 2.4,
+      "fr": 2.33,
+      "tl": 2.1
+    }
+  },
+  "A14_ids": {
+    "kaggle_raw": {
+      "unique": 7613,
+      "duplicate_ids": 0,
+      "ids_with_different_texts": 0
+    },
+    "crisislex": {
+      "unique": 27932,
+      "duplicate_ids": 1,
+      "ids_with_different_texts": 0
+    }
+  },
+  "B_class_distribution": {
+    "counts": {
+      "train": {
+        "rescue_volunteering_or_donation_effort": 14891,
+        "other_relevant_information": 8501,
+        "sympathy_and_support": 6250,
+        "infrastructure_and_utility_damage": 5715,
+        "injured_or_dead_people": 5110,
+        "not_humanitarian": 4407,
+        "caution_and_advice": 3774,
+        "displaced_people_and_evacuations": 2800,
+        "requests_or_urgent_needs": 1833,
+        "missing_or_found_people": 250
+      },
+      "validation": {
+        "rescue_volunteering_or_donation_effort": 2168,
+        "other_relevant_information": 1236,
+        "sympathy_and_support": 909,
+        "infrastructure_and_utility_damage": 831,
+        "injured_or_dead_people": 746,
+        "not_humanitarian": 644,
+        "caution_and_advice": 550,
+        "displaced_people_and_evacuations": 409,
+        "requests_or_urgent_needs": 264,
+        "missing_or_found_people": 36
+      },
+      "test": {
+        "rescue_volunteering_or_donation_effort": 4219,
+        "other_relevant_information": 2407,
+        "sympathy_and_support": 1772,
+        "infrastructure_and_utility_damage": 1617,
+        "injured_or_dead_people": 1447,
+        "not_humanitarian": 1245,
+        "caution_and_advice": 1070,
+        "displaced_people_and_evacuations": 790,
+        "requests_or_urgent_needs": 521,
+        "missing_or_found_people": 72
+      }
+    },
+    "imbalance_ratio": 59.6,
+    "classes_under_500_train": [
+      "missing_or_found_people"
+    ],
+    "max_gap_train_val_pp": 0.029999999999999805,
+    "max_gap_train_test_pp": 0.020000000000000462
+  },
+  "B_label_schema": {
+    "num_classes_present": 10,
+    "classes_present": [
+      "caution_and_advice",
+      "displaced_people_and_evacuations",
+      "infrastructure_and_utility_damage",
+      "injured_or_dead_people",
+      "missing_or_found_people",
+      "not_humanitarian",
+      "other_relevant_information",
+      "requests_or_urgent_needs",
+      "rescue_volunteering_or_donation_effort",
+      "sympathy_and_support"
+    ],
+    "card_labels_absent_from_data": [
+      "dont_know_cant_judge"
+    ],
+    "labels_not_on_card": []
+  },
+  "B3_event_metadata_available": false,
+  "B5_split_overlap": {
+    "train -> validation": {
+      "exact_shared_texts": 4.0,
+      "near_shared_texts": 5.0,
+      "rows_in_second_with_near_twin": 5.0,
+      "second_rows": 7793.0,
+      "pct_of_second": 0.06
+    },
+    "train -> test": {
+      "exact_shared_texts": 0.0,
+      "near_shared_texts": 0.0,
+      "rows_in_second_with_near_twin": 0.0,
+      "second_rows": 15160.0,
+      "pct_of_second": 0.0
+    },
+    "validation -> test": {
+      "exact_shared_texts": 0.0,
+      "near_shared_texts": 0.0,
+      "rows_in_second_with_near_twin": 0.0,
+      "second_rows": 15160.0,
+      "pct_of_second": 0.0
+    }
+  },
+  "C1_target_balance_raw": {
+    "0 = not disaster": {
+      "rows": 4342,
+      "percent": 57.0
+    },
+    "1 = disaster": {
+      "rows": 3271,
+      "percent": 43.0
+    }
+  },
+  "C2_keyword": {
+    "missing_pct": 0.8,
+    "unique": 221,
+    "pure_keywords_ge10_rows": 4,
+    "pct_keywords_extreme_rate": 15.0
+  },
+  "C3_location": {
+    "missing_pct": 33.3,
+    "distinct": 3341,
+    "pct_values_occurring_once": 84.3
+  },
+  "C4_hard_negatives": 485,
+  "C5_unlabeled_file_has_target": false,
+  "C6_length_by_target_mean": {
+    "chars": {
+      "0": 95.7,
+      "1": 108.1
+    },
+    "tokens": {
+      "0": 16.7,
+      "1": 17.7
+    }
+  },
+  "C_quality": {
+    "rows_raw": 7613,
+    "exact_duplicate_rows": 110,
+    "near_duplicate_rows": 777,
+    "conflicting_label_groups": 83,
+    "conflicting_label_rows": 306,
+    "rows_after_pipeline_dedup": 6753,
+    "rows_with_encoding_damage": 669,
+    "naive_split_val_rows_with_twin_in_train": 111,
+    "naive_split_test_rows_with_twin_in_train": 112
+  },
+  "D1_distinct_schemas": 1,
+  "D2_text_present_pct": 100.0,
+  "D3_label_dims": {
+    "Informativeness": {
+      "Related and informative": 16849,
+      "Related - but not informative": 7732,
+      "Not related": 2863,
+      "Not applicable": 489
+    },
+    "Information Type": {
+      "Other Useful Information": 7627,
+      "Affected individuals": 4790,
+      "Sympathy and support": 4650,
+      "Not labeled": 3419,
+      "Donations and volunteering": 2404,
+      "Caution and advice": 2306,
+      "Infrastructure and utilities": 1599,
+      "Not applicable": 1138
+    },
+    "Information Source": {
+      "Media": 10157,
+      "Outsiders": 9252,
+      "Not labeled": 3344,
+      "Eyewitness": 2193,
+      "Government": 1174,
+      "NGOs": 982,
+      "Business": 419,
+      "Not applicable": 412
+    }
+  },
+  "D4_events": {
+    "events": 26,
+    "min": 1000,
+    "max": 1442,
+    "largest_share_pct": 5.2
+  },
+  "D5_era_shift": {
+    "top5000_token_jaccard": 0.35,
+    "shared_top20_hashtags": [
+      "#earthquake"
+    ]
+  },
+  "D7_language_by_event": {
+    "events_under_50pct_english": [
+      "2012_Venezuela_refinery",
+      "2013_Sardinia_floods",
+      "2012_Italy_earthquakes",
+      "2012_Guatemala_earthquake",
+      "2012_Costa_Rica_earthquake",
+      "2013_Spain_train_crash",
+      "2013_Brazil_nightclub_fire",
+      "2013_Lac_Megantic_train_crash"
+    ],
+    "overall_english_pct_sample": 70.6
+  },
+  "E1_vocab_coverage": {
+    "kaggle_raw": {
+      "distinct token types": 15072.0,
+      "types covered by HumAID vocab %": 52.8,
+      "token OOV %": 10.42
+    },
+    "crisislex": {
+      "distinct token types": 36698.0,
+      "types covered by HumAID vocab %": 27.2,
+      "token OOV %": 19.47
+    },
+    "humaid_test": {
+      "distinct token types": 23834.0,
+      "types covered by HumAID vocab %": 57.7,
+      "token OOV %": 2.99
+    }
+  },
+  "E2_truncation": {
+    "humaid_train": {
+      "tokens p99": 57.0,
+      "% truncated at BiLSTM max_len=64": 0.133
+    },
+    "kaggle_raw": {
+      "tokens p99": 32.0,
+      "% truncated at BiLSTM max_len=64": 0.0
+    },
+    "crisislex": {
+      "tokens p99": 33.0,
+      "% truncated at BiLSTM max_len=64": 0.011
+    }
+  },
+  "E3_mapping": {
+    "rows_by_quality": {
+      "good": 10959,
+      "rough": 13555,
+      "unmapped": 3419
+    },
+    "humaid_classes_without_counterpart": [
+      "displaced_people_and_evacuations",
+      "missing_or_found_people",
+      "requests_or_urgent_needs"
+    ],
+    "prefilter_rows": {
+      "0": 2863,
+      "1": 24581,
+      "unlabeled": 489
+    }
+  }
+}

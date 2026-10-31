@@ -1,0 +1,57 @@
+{
+  "humaid": {
+    "train->validation": {
+      "exact_shared_texts": 4,
+      "near_shared_texts": 5,
+      "rows_in_second_with_near_twin": 5,
+      "second_rows": 7793,
+      "pct_of_second": 0.06
+    },
+    "train->test": {
+      "exact_shared_texts": 0,
+      "near_shared_texts": 0,
+      "rows_in_second_with_near_twin": 0,
+      "second_rows": 15160,
+      "pct_of_second": 0.0
+    },
+    "validation->test": {
+      "exact_shared_texts": 0,
+      "near_shared_texts": 0,
+      "rows_in_second_with_near_twin": 0,
+      "second_rows": 15160,
+      "pct_of_second": 0.0
+    }
+  },
+  "kaggle": {
+    "train->validation": {
+      "exact_shared_texts": 0,
+      "near_shared_texts": 0,
+      "rows_in_second_with_near_twin": 0,
+      "second_rows": 675,
+      "pct_of_second": 0.0
+    },
+    "train->test": {
+      "exact_shared_texts": 0,
+      "near_shared_texts": 0,
+      "rows_in_second_with_near_twin": 0,
+      "second_rows": 676,
+      "pct_of_second": 0.0
+    },
+    "validation->test": {
+      "exact_shared_texts": 0,
+      "near_shared_texts": 0,
+      "rows_in_second_with_near_twin": 0,
+      "second_rows": 676,
+      "pct_of_second": 0.0
+    }
+  },
+  "cross_dataset": {
+    "humaid_all->crisislex26": {
+      "exact_shared_texts": 0,
+      "near_shared_texts": 0,
+      "rows_in_second_with_near_twin": 0,
+      "second_rows": 27933,
+      "pct_of_second": 0.0
+    }
+  }
+}
