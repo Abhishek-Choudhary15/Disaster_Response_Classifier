@@ -1,0 +1,32 @@
+{
+  "humaid_train": {
+    "tokens": 1327473,
+    "oov_tokens": 27169,
+    "oov_rate_pct": 2.05
+  },
+  "humaid_validation": {
+    "tokens": 192575,
+    "oov_tokens": 5915,
+    "oov_rate_pct": 3.07
+  },
+  "humaid_test": {
+    "tokens": 375943,
+    "oov_tokens": 11247,
+    "oov_rate_pct": 2.99
+  },
+  "kaggle_all_splits": {
+    "tokens": 115515,
+    "oov_tokens": 11950,
+    "oov_rate_pct": 10.34
+  },
+  "crisislex26_all": {
+    "tokens": 510563,
+    "oov_tokens": 99397,
+    "oov_rate_pct": 19.47
+  },
+  "crisislex26_excluding_duplicates": {
+    "tokens": 442363,
+    "oov_tokens": 86016,
+    "oov_rate_pct": 19.44
+  }
+}

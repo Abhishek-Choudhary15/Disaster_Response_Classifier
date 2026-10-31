@@ -1,0 +1,21 @@
+{
+  "versions": {
+    "sklearn": "1.6.1",
+    "pandas": "2.2.3",
+    "numpy": "2.1.3",
+    "transformers": "5.21.0"
+  },
+  "config": {
+    "BILSTM_MAX_SEQUENCE_LENGTH": 64,
+    "BERTWEET_MAX_LENGTH": 128,
+    "SEED": 42
+  },
+  "artifacts": {
+    "bilstm_vocabulary_humaid_v1.joblib": "9b4ece9698e2795b",
+    "bilstm_vocabulary_humaid_v1.json": "e588a68ca8ab44e1",
+    "label_mapping_humaid_v1.json": "e64336add68a3469",
+    "numerical_scaler_humaid_v1.joblib": "0d5ff1cc03c2241d",
+    "tfidf_humaid_v1.joblib": "f8c15a5e97800a7f",
+    "tfidf_kaggle_prefilter_v1.joblib": "df5e462fc888ac45"
+  }
+}

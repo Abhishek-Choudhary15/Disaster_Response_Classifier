@@ -71,3 +71,8 @@ python -m src.analysis.run_audits
 python -m src.preprocessing.verify_pipeline
 ```
 Re-run everything after any change to cleaning code: `verify_pipeline` B1/B2 fail on stale artifacts by design.
+
+## 9. Known distribution differences (modeling-time rules)
+* **URLs:** HumAID text contains essentially no URLs (4 of 53,531 training rows) while 52% of Kaggle and 51% of CrisisLexT26 tweets do. The `urltoken` feature therefore has a weight learned from only 4 HumAID tweets. **Rule:** when a HumAID-trained model predicts on another dataset, mask URL features (TF-IDF columns containing `urltoken`; map `urltoken` to `<UNK>` for the BiLSTM). The Kaggle pre-filter keeps URLs because it is trained on URL-bearing data.
+* **Mentions:** 38% of HumAID tweets vs 63% CrisisLexT26 vs 26% Kaggle. **Emoji:** 3.0% / 1.9% / 0%. **Length:** HumAID tweets are longer (p99 = 57 tokens vs 32-33).
+* **Kaggle length vs target:** disaster tweets are slightly longer (mean 108 vs 96 characters, +6% tokens) - a mild effect that TF-IDF row normalisation largely removes.
